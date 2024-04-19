@@ -1,0 +1,24 @@
+{% include 'header.html' %}
+
+<br>
+<br>
+
+<h1>Créer une tâche</h1>
+    <form method="POST" action="/create" class="form-container">
+        {{ form.csrf_token }}
+        <label for="task">Tâche :</label>
+        {{ form.task(class="form-control") }}
+        {% for error in form.task.errors %}
+            <span class="text-danger">{{ error }}</span>
+        {% endfor %}
+
+        <label for="due">Date et heure d'échéance :</label>
+        {{ form.due(class="form-control") }}
+        {% for error in form.due.errors %}
+            <span class="text-danger">{{ error }}</span>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-primary">Créer un toudou</button>
+    </form>
+</body>
+</html>

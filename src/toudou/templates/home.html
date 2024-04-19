@@ -1,0 +1,46 @@
+{% include 'header.html' %}
+
+    <br>
+    <br>
+
+    <div class="container">
+    <h2>Bien venue sur l'application CRUD, vous pouvez :</h2>
+    <ul>
+        <li>A partir du bandeau de navigation:</li>
+        <ul>
+            <li>Créer une nouvelle tâche</li>
+            <li>Visionner toutes vos tâche</li>
+            <li>Rechercher une tâche à partir de la page "Voir la liste"</li>
+        </ul>
+        <li>Exporter vos tâches en cliquant <a href="export-csv">ici</a></li>
+        <li>Importer vos tâches en cliquant <a href="import-link">ici</a></li>
+    </ul>
+
+        <br>
+        <br>
+
+        {% if message %}
+        <div class="alert">
+            <div class="message">
+                {{ message }}
+            </div>
+            <div class="tasks">
+                <h3>Tâches autorisées :</h3>
+                <ul>
+                    <li>Consulter la liste des tâches</li>
+                    <li>Faire une recherche de tâches</li>
+                    <li>Exporter les tâches au format CSV</li>
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if message2 %}
+        <div class="alert-2">
+            <p class="message-2">{{ message2 }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>

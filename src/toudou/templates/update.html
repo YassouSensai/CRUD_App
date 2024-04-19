@@ -1,0 +1,35 @@
+{% include 'header.html' %}
+
+<br>
+<br>
+<h1>Mettre à jour la tâche</h1>
+<form action="/update/{{ todo.id }}" method="post">
+    {{ form.csrf_token }}
+    <label for="task">Tâche :</label>
+    {{ form.task(class="form-control") }}
+    {% for error in form.task.errors %}
+        <span class="text-danger">{{ error }}</span>
+    {% endfor %}
+
+    <label for="due">Date et heure d'échéance :</label>
+    {{ form.due(class="form-control") }}
+    {% for error in form.due.errors %}
+        <span class="text-danger">{{ error }}</span>
+    {% endfor %}
+
+    <label for="complete">Complétée :</label>
+    <div class="button-container">
+        <label><input type="radio" id="complete-yes" name="complete" value="yes" {% if todo.complete %}checked{% endif %}> Oui</label>
+        <label><input type="radio" id="complete-no" name="complete" value="no" {% if not todo.complete %}checked{% endif %}> Non</label>
+    </div>
+
+    {% for error in form.complete.errors %}
+        <span class="text-danger">{{ error }}</span>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary">Mettre à jour la tâche</button>
+
+</form>
+
+</body>
+</html>

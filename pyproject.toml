@@ -1,0 +1,29 @@
+[project]
+name = "Toudou"
+version = "0.1"
+description = "A simple task manager."
+readme = "README.md"
+dependencies = [
+    "click>=8.1.7",
+    "flask>=3.0.3",
+    "sqlalchemy>=2.0.29",
+    "python-dotenv>=1.0.1",
+    "flask-wtf>=1.2.1",
+    "flask-httpauth>=4.8.0",
+]
+requires-python = ">=3.10"
+
+[project.license]
+text = "MIT"
+
+[project.scripts]
+toudou = "toudou.views:cli"
+
+[build-system]
+requires = [
+    "pdm-backend",
+]
+build-backend = "pdm.backend"
+
+[tool]
+[tool.pdm]

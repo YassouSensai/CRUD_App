@@ -1,0 +1,60 @@
+{% include 'header.html' %}
+
+<br>
+<br>
+
+<h1>Rechercher une toudou</h1>
+<form action="/search" method="GET">
+    {{ form.hidden_tag() }}
+    <label for="search">Rechercher une toudou :</label>
+    {{ form.search(class="form-control", placeholder="Entrez le nom...") }}
+    <input type="submit" value="Rechercher">
+    <button type="button" onclick="window.location.href='/get-all'">Annuler</button>
+</form>
+
+
+<br>
+<br>
+
+
+<h1>Toutes les toudous</h1>
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Tâche</th>
+                <th>Date d'échéance</th>
+                <th>Complétée</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for index, todo in todos %}
+            <tr {% if todo[1].task == search_term %}class="found"{% endif %}>
+                <td>{{ index }}</td>
+                <td>{{ todo[0] }}</td>
+                <td>{{ todo[1] }}</td>
+                <td>{{ "Oui" if todo[2] else "Non" }}</td>
+                <td>
+                    <a href="/delete/{{todo[3]}}" class="delete-link">Supprimer</a>
+                    <a href="/update-link/{{todo[3]}}" class="update-link">Modifier</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+    <br>
+
+    {% if message2 %}
+    <div class="alert-2">
+        <p class="message-2">{{ message2 }}</p>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+
+</html>

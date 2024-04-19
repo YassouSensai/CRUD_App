@@ -1,0 +1,14 @@
+{% include 'header.html' %}
+
+    <br>
+    <br>
+
+    <form action="/import-csv" method="post" enctype="multipart/form-data">
+        <label for="file">Sélectionner un fichier CSV à importer :</label>
+        <input type="file" id="file" name="file" accept=".csv">
+        <button type="submit">Importer</button>
+    </form>
+
+
+</body>
+</html>
